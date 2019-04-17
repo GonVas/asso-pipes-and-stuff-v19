@@ -20,8 +20,15 @@ class UnboundedQueue implements AsyncQueue<string>{
 
     }
 
-    async dequeue(): Promise<string>{
-        return Promise.resolve(this.queue.shift());
+    async dequeue(): Promise<string> {
+        return new Promise<string>((resolve) => {
+            if (this.queue.length>0) {
+                resolve(this.queue.shift());
+            } else {
+                this.promises.push(resolve);
+            }
+        });
     }
+
 
 }
