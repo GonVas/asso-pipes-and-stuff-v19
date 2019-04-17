@@ -8,7 +8,7 @@ interface AsyncQueue<T> {
     dequeue(): Promise<T>
 } 
 
-class UnboundedQueue implements AsyncQueue<string>{
+export class UnboundedQueue implements AsyncQueue<string>{
     queue: Array<string> = new Array<string>();
     promises: Array<(value: string) => void> = new Array<(value: string) => void>();
 
