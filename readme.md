@@ -1,7 +1,7 @@
 # Info.Sec.C00k3r
 
 
-##Running
+## Running
 First install node and typescript avaiable in most distros packages repositories, in ubuntu **sudo apt-get install node typescript**.
 Then compile the typescript code, run **tsc -w -p .** in the directory containing the config file tsconfig.json, typescript will use this file to locate and compile all the files. The final compiled files (compiled to .js) will be placed in the build folder. Run the desired js file with node, in this case **node build/main.js**.
 
