@@ -111,6 +111,7 @@ function iterate(f: Filter) {
 
 const f1 = new SlowFileLineReader('./best15.txt')
 const f2 = new FileLineReader('./best-mieic.txt')
+console.log("HELLO RUNING THIS.")
 
 const r1 = new Writer(new ToUpperCase(new Join(f1, f2)))
 
