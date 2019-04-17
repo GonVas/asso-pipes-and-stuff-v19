@@ -1,5 +1,11 @@
 # Info.Sec.C00k3r
 
+
+##Running
+First install node and typescript avaiable in most distros packages repositories, in ubuntu **sudo apt-get install node typescript**.
+Then compile the typescript code, run **tsc -w -p .** in the directory containing the config file tsconfig.json, typescript will use this file to locate and compile all the files. The final compiled files (compiled to .js) will be placed in the build folder. Run the desired js file with node, in this case **node build/main.js**.
+
+
 > **To develop an application that supports the creation and execution of Information Security Recipes.**
 The base unit of computation in this application is a Task. Tasks are comprised of (a) a set of inputs, (b) a set of outputs, and (c) an inherent behaviour. One can compose tasks by arbitrarily connecting their inputs and outputs to form a Recipe. There's a standard collection of tasks that we can already foresee, but the application should be extensible enough to support new tasks via plugins without altering the base code. Recipes can be saved and reused as tasks in other recipes.
 
