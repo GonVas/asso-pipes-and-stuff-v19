@@ -33,11 +33,9 @@ export class Subscriber{
         this.id = id
     }
 
-    async consumework(pwork:Promise<string>): Promise<void>{
-
+    async consumework(pwork:Promise<string>){
         let work = await pwork
         let review = "I subscriber " + this.id + " consumed work: " + work + " and liked it"
         console.log(review)
-        return Promise.resolve()
     }
 }
