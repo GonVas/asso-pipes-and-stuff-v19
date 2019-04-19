@@ -15,16 +15,16 @@ export class Registry {
 
   public addUser<User>(user: User) {
       if (user.constructor.name == "Publisher")
-          this.publishers.push(<Publisher><unknown> user);
+          this.pubs.push(<Publisher><unknown> user);
       else
-          this.subscribers.push(<Subscriber><unknown> user);
+          this.subs.push(<Subscriber><unknown> user);
   }
 
   public getPublishers() {
-      return this.publishers;
+      return this.pubs;
   }
 
   public getSubscribers() {
-      return this.subscribers;
+      return this.subs;
   }
 }

@@ -10,20 +10,13 @@ export class Broker {
     constructor(public name: string, public registry: Registry) {
     }
 
-}
-
-class Broker {
-    queues: any = {};
-
-    constructor(public name: string, public registry: Registry) {
-    }
-
     public assignQueues() {
-        this.registry.getPublishers().forEach(publisher => this.queues[publisher.name] = new UnboundedQueue());      // Assign a fresh queue to each publisher.
-        this.registry.getSubscribers().forEach(subscriber => this.queues[subscriber.name] = new UnboundedQueue());   // Assign a fresh queue to each subscriber.
+        this.registry.getPublishers().forEach(publisher => this.queues[publisher.name] = new UnboundedQueue());
+        this.registry.getSubscribers().forEach(subscriber => this.queues[subscriber.name] = new UnboundedQueue());
     }
 
     public enqueueMessage(publisher: Publisher, message: Message) {
         this.queues[publisher.name].enqueue(message);
     }
+
 }
