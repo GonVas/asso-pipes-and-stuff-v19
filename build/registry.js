@@ -7,15 +7,15 @@ class Registry {
     }
     addUser(user) {
         if (user.constructor.name == "Publisher")
-            this.publishers.push(user);
+            this.pubs.push(user);
         else
-            this.subscribers.push(user);
+            this.subs.push(user);
     }
     getPublishers() {
-        return this.publishers;
+        return this.pubs;
     }
     getSubscribers() {
-        return this.subscribers;
+        return this.subs;
     }
 }
 exports.Registry = Registry;

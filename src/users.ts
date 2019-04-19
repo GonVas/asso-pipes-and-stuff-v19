@@ -25,6 +25,20 @@ export class Publisher{
 
 }
 
+export class SpecilalityPublisher extends Publisher{
+
+    speciality: string
+
+    constructor(speciality:string){
+        super();
+        this.speciality = speciality
+    }
+
+    getSpeciality():string{
+        return this.speciality
+    }
+}
+
 export class Subscriber{
 
     id : Number;

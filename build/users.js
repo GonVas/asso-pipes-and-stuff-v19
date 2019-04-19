@@ -25,6 +25,16 @@ class Publisher {
     }
 }
 exports.Publisher = Publisher;
+class SpecilalityPublisher extends Publisher {
+    constructor(speciality) {
+        super();
+        this.speciality = speciality;
+    }
+    getSpeciality() {
+        return this.speciality;
+    }
+}
+exports.SpecilalityPublisher = SpecilalityPublisher;
 class Subscriber {
     constructor(id) {
         this.id = id;
