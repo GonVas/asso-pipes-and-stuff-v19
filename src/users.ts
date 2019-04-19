@@ -38,4 +38,9 @@ export class Subscriber{
         let review = "I subscriber " + this.id + " consumed work: " + work + " and liked it"
         console.log(review)
     }
+
+    consumework_now(work:string){
+        let review = "I subscriber " + this.id + " got fed by a ventilator or broker with work: " + work + " and liked it"
+        console.log(review)
+    }
 }

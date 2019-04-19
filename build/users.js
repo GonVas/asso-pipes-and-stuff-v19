@@ -34,8 +34,11 @@ class Subscriber {
             let work = yield pwork;
             let review = "I subscriber " + this.id + " consumed work: " + work + " and liked it";
             console.log(review);
-            return Promise.resolve();
         });
+    }
+    consumework_now(work) {
+        let review = "I subscriber " + this.id + " got fed by a ventilator or broker with work: " + work + " and liked it";
+        console.log(review);
     }
 }
 exports.Subscriber = Subscriber;

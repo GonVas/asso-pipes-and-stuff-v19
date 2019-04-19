@@ -10,7 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const users_1 = require("./users");
 const queue_1 = require("./queue");
+const ventilator_1 = require("./ventilator");
 setInterval(() => { }, 1000);
+var max_works = 30;
 function scenario1() {
     return __awaiter(this, void 0, void 0, function* () {
         // Do your stuff here
@@ -24,7 +26,7 @@ function scenario1() {
             let possible_work = q1.dequeue();
             s1.consumework(possible_work);
         }
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < max_works; i++) {
             const work = yield p1.getwork();
             q1.enqueue(work);
             console.log("P1 published : " + work);
@@ -52,7 +54,7 @@ function scenario2() {
             let possible_work = q1.dequeue();
             randsub.consumework(possible_work);
         }
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < max_works; i++) {
             const work = yield p1.getwork();
             q1.enqueue(work);
             console.log("P1 published : " + work);
@@ -62,5 +64,37 @@ function scenario2() {
     });
 }
 ;
-scenario2();
+function scenario3() {
+    return __awaiter(this, void 0, void 0, function* () {
+        // Do your stuff here
+        console.log("Scenario 3");
+        let p1 = new users_1.Publisher;
+        let q1 = new queue_1.UnboundedQueue;
+        let v1 = new ventilator_1.Ventilator(q1);
+        let subs = new Array();
+        for (let i = 0; i < 5; i++) {
+            console.log('Creting with sub id: ' + i);
+            let sub = new users_1.Subscriber(i);
+            //subs.push(sub)
+            v1.register(sub);
+        }
+        v1.start_notifying(max_works, false);
+        /*randmoly assign subscriptions, simulating users clicking subscribe at different times and different amounts
+        for(let i = 0; i < 35; i++){
+            var randsub = subs[Math.floor(Math.random() * subs.length)];
+            let possible_work = q1.dequeue()
+            randsub.consumework(possible_work)
+        }
+        */
+        for (let i = 0; i < max_works; i++) {
+            const work = yield p1.getwork();
+            q1.enqueue(work);
+            console.log("P1 published : " + work);
+            console.log("Size of queue : " + q1.queue.length);
+        }
+        process.exit();
+    });
+}
+;
+scenario3();
 //# sourceMappingURL=main.js.map
